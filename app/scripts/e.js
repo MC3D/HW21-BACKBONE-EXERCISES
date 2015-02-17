@@ -10,14 +10,12 @@
       '': 'index',
     },
 
-    // some people do this in the document ready; not sure where Jake does it;
-    // this is where I throw it so it's easy for me to see what generates
-    // on each url route
-
     index: function(){
       var todoCollection = new TodoCollection();
+
       var todoInputView = new TodoInputView({collection: todoCollection});
       todoInputView.render();
+
       var todoListView = new TodoListView({collection: todoCollection});
       todoListView.render();
     }
@@ -27,8 +25,6 @@
   // ===================================================================== VIEWS
 
   var TodoInputView = Backbone.View.extend({
-
-    // this is a form; there is a template in my html for it
 
     tagName: 'form',
     className: 'todo-form',
@@ -44,10 +40,6 @@
       this.$el.append(this.template); // appends template to form .todo-form
     },
 
-    // taking in the value of the input when the submit button is clicked
-    // if it's empty ... pops up an alert
-    // if text is found an new todo item is added
-
     addTodo: function(event) {
       event.preventDefault();
       var title = $('.todo-input').val().trim();
@@ -59,8 +51,6 @@
       }
     }
   });
-
-  // TodoListView is almost complete.
 
   var TodoListView = Backbone.View.extend({
     tagName: 'ul',
@@ -74,23 +64,34 @@
       });
     },
 
-    renderChild: function(todo) { // pass in each todo from the collection.each (see initialize)
+    renderChild: function(todo) {
       var todoItemView = new TodoItemView({model: todo, $container: $('.todo-list')});
       todoItemView.render();
     },
   });
-
-  // this is where I stopped working ...
 
   var TodoItemView = Backbone.View.extend({
     tagName: 'li',
     className: 'todo-item',
     template: _.template($('#todo-item-template').text()),
 
+    events: {
+      'click .btn-delete': 'deleteTodo'
+    },
+
+    initialize: function() {
+      this.listenTo(this.model, 'destroy', this.remove);
+    },
+
     render: function() {
       $('.todo-list').prepend(this.el); // adds this to the ul created in TodoListView
-      this.$el.append(this.template(this.model.toJSON()));
-    }
+      this.$el.prepend(this.template(this.model.toJSON()));
+    },
+
+    deleteTodo: function() {
+      this.model.destroy();
+      this.$el.remove();
+    },
   });
 
   // ==================================================================== MODELS
