@@ -59,9 +59,10 @@
     initialize: function() {
       $('#container').append(this.el);
       // sync: triggers a change event when server state differs from current attributes
-      this.listenTo(this.collection, 'sync', function(collection) {
-        collection.each(this.renderChild);
-      });
+      // this.listenTo(this.collection, 'sync', function(collection) {
+      //   collection.each(this.renderChild);
+      // });
+      this.collection.on('add', this.renderChild, this);
     },
 
     renderChild: function(todo) {
