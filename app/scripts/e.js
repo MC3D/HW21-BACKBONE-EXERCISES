@@ -62,7 +62,7 @@
       // this.listenTo(this.collection, 'sync', function(collection) {
       //   collection.each(this.renderChild);
       // });
-      this.collection.on('add', this.renderChild, this);
+      this.listenTo(this.collection, 'add', this.renderChild);
     },
 
     renderChild: function(todo) {
