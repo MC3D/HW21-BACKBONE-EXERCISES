@@ -24,19 +24,19 @@
 </head>
 
 <body>
-  <div class='container'>
-    <script type='text/template' id='post-template'>
-     <form class='post-form'>
-       <legend>New Post</legend>
-       <label>Title</label>
-       <input type="text" name="title" value="" />
-       <label>Body</label>
-       <textarea id='body' type='text' name='body' value=""></textarea>
-       <hr />
-       <button type='submit' class='btn'>POST</button>
-     </form>
-    </script>
-  </div>
+  <div class='container'></div>
+
+  <script type='text/template' id='template-view-posts'>
+   <ul>
+     <li><%=title%></li>
+   </ul>
+  </script>
+
+  <script type="text/template" id="template-view-post-details">
+      <h1><%=title%></h1>
+      <div><%=body%></div>
+  </script>
+
 
   <!-- build:js scripts/vendor.js -->
   <!-- bower:js -->
@@ -53,7 +53,7 @@
   <!-- endbuild -->
 
   <!-- build:js scripts/main.js -->
-  <script src="scripts/a.js"></script>
+  <script src="scripts/c.js"></script>
   <!-- endbuild -->
 </body>
 
