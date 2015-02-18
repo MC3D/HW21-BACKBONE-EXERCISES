@@ -2,24 +2,24 @@
 <html lang='en'>
 
 <head>
-  <meta charset='utf-8'>
-  <!-- <meta name='description' content=''>
-  <meta name='viewport' content='width=device-width, initial-scale=1, minimal-ui'> -->
-  <title>BACKBONE POST</title>
+  <meta charset="utf-8">
+  <!-- <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui"> -->
+  <title>BACKBONE TODO APP</title>
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
+  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css"> -->
   <!-- build:css styles/vendor.css -->
   <!-- bower:css -->
-  <link rel='stylesheet' href='../bower_components/normalize-css/normalize.css' />
+  <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
   <!-- endbower -->
   <!-- endbuild -->
 
   <!-- build:css styles/main.css -->
-  <link rel='stylesheet' href='styles/main.css'>
+  <link rel="stylesheet" href="styles/main.css" />
   <!-- endbuild -->
 
   <!-- build:js scripts/vendor/modernizr.js -->
-  <script src='../bower_components/modernizr/modernizr.js'></script>
+  <script src="../bower_components/modernizr/modernizr.js"></script>
   <!-- endbuild -->
 </head>
 
@@ -34,11 +34,11 @@
   </script>
 
   <script type='text/template' id='todo-item-template'>
-     <input type='checkbox'>
-     <h3><%= title%></h3>
-     <span>Due: <%= dueDate %></span>
+     <h3 class='inline'><%= title%></h3>
+     <span class='inline'>due: <%= dueDate %></span>
+     <input class='inline' type='checkbox'>
+     <button class='btn-delete inline'>delete</button>
      <p><%= details %></p>
-     <button class='btn-delete'>delete</button>
   </script>
 
   <script type='text/template' id='todo-edit-template'>

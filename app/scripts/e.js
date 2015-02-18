@@ -10,14 +10,15 @@
       '': 'index',
     },
 
-    index: function(){
-      var todoCollection = new TodoCollection();
-
-      var todoInputView = new TodoInputView({collection: todoCollection});
-      todoInputView.render();
-
-      var todoListView = new TodoListView({collection: todoCollection});
-      todoListView.render();
+    initialize: function(){
+      this.todoCollection = new TodoCollection();
+      this.todoInputView = new TodoInputView({collection: this.todoCollection});
+      this.todoListView = new TodoListView({collection: this.todoCollection});
+    },
+    
+    index: function() {
+      this.todoInputView.render();
+      this.todoListView.render();
     }
 
   });
@@ -36,8 +37,8 @@
     },
 
     initialize: function() {
-      $('#container').append(this.el); // adds form .todo-form to html
-      this.$el.append(this.template); // appends template to form .todo-form
+      $('#container').append(this.el);
+      this.$el.append(this.template);
     },
 
     addTodo: function(event) {
@@ -58,10 +59,6 @@
 
     initialize: function() {
       $('#container').append(this.el);
-      // sync: triggers a change event when server state differs from current attributes
-      // this.listenTo(this.collection, 'sync', function(collection) {
-      //   collection.each(this.renderChild);
-      // });
       this.listenTo(this.collection, 'add', this.renderChild);
     },
 
@@ -77,7 +74,8 @@
     template: _.template($('#todo-item-template').text()),
 
     events: {
-      'click .btn-delete': 'deleteTodo'
+      'click .btn-delete': 'deleteTodo',
+      'click .btn-mark-complete': 'markComplete',
     },
 
     initialize: function() {
@@ -85,7 +83,7 @@
     },
 
     render: function() {
-      $('.todo-list').prepend(this.el); // adds this to the ul created in TodoListView
+      $('.todo-list').prepend(this.el);
       this.$el.prepend(this.template(this.model.toJSON()));
     },
 
@@ -93,18 +91,22 @@
       this.model.destroy();
       this.$el.remove();
     },
+
+    markComplete: function() {
+      this.$el.toggleClass('complete');
+    }
   });
 
   // ==================================================================== MODELS
 
   var TodoModel = Backbone.Model.extend({
-    idAttribute: '_id', // implemented b/c tiny pizza server uses _id not id
+    idAttribute: '_id',
 
     defaults: function() {
       return {
         title: '',
-        dueDate: '',
-        details: '',
+        dueDate: 'unassigned',
+        details: 'Add todo details ...',
         completed: false
       };
     },
@@ -118,15 +120,19 @@
     url: 'http://tiny-pizza-server.herokuapp.com/collections/mady-todo-app',
 
     initialize: function() {
-      this.fetch(); // return default set of models for this collection from the server
+      this.fetch();
     }
   });
 
   // ====================================================================== GLUE
 
   $(document).ready(function(){
-    var router = new TodoRouter();
+    window.router = new TodoRouter();
     Backbone.history.start();
   });
 
 })();
+
+// QUESTIONS FOR JAKE
+// SYNC ISSUES
+// $CONTAINER ISSUES
