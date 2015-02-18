@@ -15,7 +15,7 @@
       this.todoInputView = new TodoInputView({collection: this.todoCollection});
       this.todoListView = new TodoListView({collection: this.todoCollection});
     },
-    
+
     index: function() {
       this.todoInputView.render();
       this.todoListView.render();

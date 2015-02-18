@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui"> -->
   <title>BACKBONE TODO APP</title>
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css">
   <!-- build:css styles/vendor.css -->
   <!-- bower:css -->
   <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
@@ -36,9 +36,9 @@
   <script type='text/template' id='todo-item-template'>
      <h3 class='inline'><%= title%></h3>
      <span class='inline'>due: <%= dueDate %></span>
-     <input class='inline' type='checkbox'>
-     <button class='btn-delete inline'>delete</button>
-     <p><%= details %></p>
+     <button class='btn-complete inline btn-info'>check</button>
+     <button class='btn-delete inline btn-danger'>delete</button>
+     <p class='hidden'><%= details %></p>
   </script>
 
   <script type='text/template' id='todo-edit-template'>

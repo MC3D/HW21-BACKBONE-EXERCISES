@@ -15,14 +15,44 @@
 
 #container {
   margin: 0 auto;
+  -moz-text-align: center;
+  -ms-text-align: center;
+  -o-text-align: center;
+  -webkit-text-align: center;
   text-align: center;
   width: 30rem;
 
   .todo-form {
     border-bottom: solid 1px;
   }
+
+  ul {
+    margin: 0;
+    -moz-text-align: center;
+    -ms-text-align: center;
+    -o-text-align: center;
+    -webkit-text-align: center;
+    text-align: center;
+  }
+
+  li {
+    border-bottom: solid 1px;
+    -moz-text-align: left;
+    -ms-text-align: left;
+    -o-text-align: left;
+    -webkit-text-align: left;
+    text-align: left;
+
+    h3 {
+      width: 255px;
+    }
+  }
 }
 
 .inline {
   display: inline-block;
+}
+
+.hidden {
+  display: none;
 }
