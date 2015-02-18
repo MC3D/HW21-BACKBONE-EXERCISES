@@ -34,10 +34,10 @@
   </script>
 
   <script type='text/template' id='todo-item-template'>
-     <h3 class='inline'><%= title%></h3>
+     <input class='input-mark-complete inline' type='checkbox'>
+     <h3 class='text inline'><%= title%></h3>
      <span class='inline'>due: <%= dueDate %></span>
-     <button class='btn-complete inline btn-info'>check</button>
-     <button class='btn-delete inline btn-danger'>delete</button>
+     <button class='btn-delete btn-danger inline'>delete</button>
      <p class='hidden'><%= details %></p>
   </script>
 

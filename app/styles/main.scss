@@ -24,6 +24,7 @@
 
   .todo-form {
     border-bottom: solid 1px;
+    margin: 0;
   }
 
   ul {
@@ -55,4 +56,8 @@
 
 .hidden {
   display: none;
+}
+
+.complete {
+  text-decoration: line-through;
 }

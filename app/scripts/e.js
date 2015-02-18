@@ -75,7 +75,7 @@
 
     events: {
       'click .btn-delete': 'deleteTodo',
-      'click .btn-mark-complete': 'markComplete',
+      'click .input-mark-complete': 'markComplete',
     },
 
     initialize: function() {
@@ -93,7 +93,7 @@
     },
 
     markComplete: function() {
-      this.$el.toggleClass('complete');
+      this.$('.text').toggleClass('complete');
     }
   });
 
